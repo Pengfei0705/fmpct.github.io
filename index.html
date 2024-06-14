@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .navbar {
+            width: 100%;
+            height: 60px;
+            background-color: #393939;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+        .nav-area {
+            width: 600px;
+            height: 60px;
+            display: flex;
+            justify-content: space-around;
+        }
+        .nav-item {
+            width: 150px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            text-decoration: none;
+        }
+        .nav-item:hover {
+            background-color: orange;
+        }
+        .header {
+            width: 100%;
+            max-width: 2046px;
+            height: 569px;
+            background-image: url('head.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+            margin: 30px auto;
+            text-align: center;
+        }
+        .content {
+            color: black;
+            padding: 0 300px; /* 段落两侧预留300px空白 */
+            text-align: justify; /* 文字两端对齐 */
+        }
+        .content h1, .content h2, .content h3 {
+            text-align: center;
+            font-size: 60px;
+            margin: 20px auto;
+        }
+        .content p {
+            font-size: 36px;
+        }
+        .content figure {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 auto; /* 确保图像和标题居中对齐 */
+        }
+        .content img {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%; /* 确保图片不会超出容器宽度 */
+        }
+        .content figcaption {
+            font-size: 24px;
+            margin-top: 10px;
+            text-align: center;
+            color: black; /* 设置标题颜色 */
+        }
+        .content video {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%; /* 确保视频不会超出容器宽度 */
+            margin-bottom: 20px; /* 添加下边距以便视频和下方内容之间有间距 */
+        }
+        hr {
+            border: none;
+            border-top: 10px solid black;
+            margin: 20px 0;
+            width: 100%;
+        }
+        /* 弹窗样式 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #393939;
+            padding: 20px;
+            border: 8px solid white;
+            width: 80%;
+            max-width: 1800px; /* 增加最大宽度 */
+            max-height: 80%; /* 增加最大高度 */
+            overflow-y: auto; /* 使内容可滚动 */
+            margin: auto;
+            color: white; /* 弹窗字体颜色 */
+            font-size: 32px; /* 弹窗字体大小 */
+        }
+        .modal-content h4 {
+            text-align: center;
+            font-size: 56px;
+            margin: 20px auto;
+            color: white; /* 弹窗字体颜色 */
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+    <title>Navigation Bar</title>
+</head>
+<body>
+    <div class="navbar">
+        <div class="nav-area">
+            <a href="#" class="nav-item">Main</a>
+            <a href="#" class="nav-item">Principle</a>
+            <a href="#" class="nav-item">Usage</a>
+            <a href="#" class="nav-item" onclick="document.getElementById('aboutUsModal').style.display='flex'">About Us</a>
+        </div>
+    </div>
+    <div class="header"></div>
+    <div class="content">
+        <hr> <!-- 分割线 -->
+        <h1>Section 1: Introduction to FM-PCT</h1>
+        <p>This study introduced a novel thermal-wave Fourier-spectrum-based tomographic modality, FM-PCT, as a derivative of TC-PCT and pulse thermography. Employing matched filtering and frequency-domain delay combination, FM-PCT processes the stacks of original IR camera frame thermal sequences in the frequency spectrum of the excitation time-domain waveform, thereby generating three-dimensional images of material internal structures.</p>
+        <figure>
+            <img src="picture1.png" alt="Example Image">
+            <figcaption><strong>Fig. 1 | Schematic of FM-PCT.</strong> <strong>a</strong> The frequency-delay between the in-phase signals (R1, R2, R3). <strong>b</strong> The in-phase signals in time domain. <strong>c</strong> Cross-correlation amplitude signals. <strong>d</strong> The complete FM-PCT algorithm.</figcaption>
+        </figure>
+        <hr> <!-- 分割线 -->
+        <h2>Section 2: Tomograms</h2>
+        <p>Quantitative detection of subsurface defects is a hot issue in infrared thermography and photothermal tomography. Conventional infrared thermography only provides 2D images and analysis for defect detection. In addition, advanced photothermal tomography like enhanced truncated-correlation photothermal coherence tomography significantly relies on the frame rate and has a small imaging area. To overcome foregoing issues, we explored a novel photothermal tomography technique <strong>FM-PCT</strong>, which can be used for large specimen with high depth-resolved capability even under a low frame rate (<strong>50 Hz</strong>).</p>
+        <figure>
+            <img src="picture2.png" alt="Advanced Analysis Image">
+            <figcaption><strong>Fig. 2 | Comparing eTC-PCT with FM-PCT using pulse excitation for a carbon fiber reinforced polymer laminate with pre-fabricated defects.</strong></figcaption>
+        </figure>
+        <p>Low-velocity impact damage evaluation is important for non-destructive testing (<strong>NDT</strong>) techniques and mechanics analysis. General NDT techniques like ultrasound, infrared, X-ray radiation provide limited 2D information. Even if using a X-ray computed tomography (CT), limited by sample-size, CT exhibits low axial resolution. Micro-CT can effectively solve this problem. However, it is <strong>too expensive</strong> thus not suitable for the industrial application. Now, FM-PCT is employed for impact damage evaluation and provides promising results.</p>
+        <figure>
+            <img src="picture3.png" alt="Advanced Analysis Image">
+            <figcaption><strong>Fig. 3 | Pulsed thermography results for plates with 10 J and 20J impact damage. a1</strong> Photographs of a CFRP-1. <strong>a2</strong> X-ray micro-CT results for CFRP-1. b X-ray micro-CT 3D tomogram and FM-PCT tomograms for CFRP-1. <strong>c1</strong> Photographs of an CFRP-2. <strong>c2</strong> X-ray micro-CT results for CFRP2. <strong>d</strong> X-ray micro-CT 3D tomogram and FM-PCT tomograms for CFRP-2.</figcaption>
+        </figure>
+        <hr> <!-- 分割线 -->
+        <h3>Section 3: Video Demonstration</h3>
+        <p>A. Pre-Fabricated Defect Detection</p>
+        <video controls>
+            <source src="video2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <p>B. Impact Damage Evaluation</p>
+        <video controls>
+            <source src="video1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <hr> <!-- 分割线 -->
+        <h2>Acknowledgement</h2>
+        <p>XM acknowledges the support of the Natural Sciences and Engineering Research Council of Canada (NSERC) through the CREATE-oN DuTy! Program (496439-2017), the Canada Research Chair in Multi-polar Infrared Vision (MIVIM), and the Canada Foundation for Innovation. HZ acknowledges the support of the National Key Research and Development Program of China (2023TFE0197800). AM gratefully acknowledges the Natural Sciences and Engineering Research Council (NSERC) Discovery Grants Program (RGPIN-2020-04595), the Canada Foundation for Innovation (CFI) Research Chairs Program (950-230876), the New Frontiers in Research Fund – Exploration (NFRFE-2019-00647) fund and the CFI-JELF program (38794) for financial support. The authors would like to thank Prof. G. Cicala and his team at University of Catania for providing the composite laminates.</p>
+        <figure>
+            <img src="picture4.png" alt="Advanced Analysis Image">
+        </figure>
+    </div>
+    <div id="aboutUsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="document.getElementById('aboutUsModal').style.display='none'">&times;</span>
+            <h4>Frequency Multiplexed Photothermal Correlation Tomography</h4>
+            <br> <!-- 空一行 -->
+            <br> <!-- 空一行 -->
+            Pengfei Zhu<sup>1</sup>, Rongbang Wang<sup>2</sup>, Koneswaran Sivagurunathan<sup>3</sup>, Stefano Sfarra<sup>4</sup>, Fabrizio Sarasini<sup>5</sup>, Clemente Ibarra-Castanedo<sup>1</sup>, Xavier Maldague<sup>1</sup>, Hai Zhang<sup>2,1*</sup> and Andreas Mandelis<sup>3*</sup>
+            <br> <!-- 空一行 -->
+            <br> <!-- 空一行 -->
+            <sup>1</sup>Department of Electrical and Computer Engineering, Computer Vision and Systems Laboratory (CVSL), Laval University, Quebec G1V 0A6, Canada
+            <br> <!-- 空一行 -->
+            <sup>2</sup>Centre for Composite Materials and Structures (CCMS), Harbin Institute of Technology, Harbin 150001, China
+            <br> <!-- 空一行 -->
+            <sup>3</sup>Center for Advanced Diffusion-Wave and Photoacoustic Technologies (CADIPT) and Institute for Advanced Non-Destructive and Non-Invasive Diagnostic Technologies (IANDIT), Department of Mechanical and Industrial Engineering, University of Toronto, Toronto, Canada.
+            <br> <!-- 空一行 -->
+            <sup>4</sup>Department of Industrial and Information Engineering and Economics (DIIIE), University of L’Aquila, I-67100 L’Aquila (AQ), Italy
+            <br> <!-- 空一行 -->
+            <sup>5</sup>Department of Chemical Engineering Materials Environment & UDR INSTM, Sapienza University of Rome, Rome, I-00184, Italy
+            <br> <!-- 空一行 -->
+            <br> <!-- 空一行 -->
+            *Corresponding authors: hai.zhang.1@ulaval.ca (H.Z.), mandelis@mie.utoronto.ca (A.M.)
+            <br> <!-- 空一行 -->
+            <br> <!-- 空一行 -->
+        </div>
+    </div>
+</body>
+</html>
